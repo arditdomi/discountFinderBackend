@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false">
+    <testsuites>
+        <testsuite name="Feature">
+            <directory suffix="Test.php">./tests/Feature/</directory>
+        </testsuite>
+
+        <testsuite name="Unit">
+            <directory suffix="Test.php">./tests/Unit/</directory>
+        </testsuite>
+
+    </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./app</directory>
+            <exclude>
+                <directory suffix=".php">./app/Console/</directory>
+                <directory suffix=".php">./app/Exceptions/</directory>
+                <directory suffix=".php">./app/Http/Middleware/</directory>
+                <directory suffix=".php">./app/Providers/</directory>
+                <directory suffix=".php">./bootstrap/</directory>
+                <directory suffix=".php">./config/</directory>
+                <directory suffix=".php">./database/</directory>
+                <directory suffix=".php">./public/</directory>
+                <directory suffix=".php">./reports/</directory>
+                <directory suffix=".php">./resources/</directory>
+                <directory suffix=".php">./routes/</directory>
+                <directory suffix=".php">./storage/</directory>
+                <directory suffix=".php">./tests/</directory>
+                <directory suffix=".php">./vendor/</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+    <php>
+        <env name="DB_CONNECTION" value="mysql_testing"/>
+        <env name="APP_ENV" value="testing"/>
+        <env name="CACHE_DRIVER" value="array"/>
+        <env name="SESSION_DRIVER" value="array"/>
+        <env name="QUEUE_DRIVER" value="sync"/>
+    </php>
+
+    <logging>
+        <log type="junit" target="reports/test_results.xml" logIncompleteSkipped="false"/>
+    </logging>
+</phpunit>
